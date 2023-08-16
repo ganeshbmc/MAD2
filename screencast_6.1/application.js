@@ -1,8 +1,29 @@
-// Vue life cycle hooks
-// beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 // Note that data is a function in vue component
-Vue.component("message-board", {
+const About = Vue.component("about", {
+    template: `
+        <div>
+            <h4>About</h4>
+            <p>This is the about page of our company.</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>`
+})
+
+const PrivacyPolicy = Vue.component("privacy-policy", {
+    template: `
+        <div>
+            <h4>Privacy Policy</h4>
+            <p>This is the privacy policy of our company.</p>
+            <p>What is Lorem Ipsum?
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            </p>
+        </div>`
+})
+
+const MessageBoard = Vue.component("message-board", {
     props: ['title'],
     template: `
        <div>
@@ -75,17 +96,37 @@ Vue.component("message-board", {
     //     // Just consider that the following is the response from the backend API  
     //     this.messages = [{"for": "ganesh", "visitor_name": "gp", "visitor_message": "Hello world!"}];
     // },
-    mounted: async function () {
-        // Just use a dummy backend API  
-        r = await fetch('http://localhost:8000/messages.json');     // Use 'http://localhost:8000/application.html' in browser
-        data = await r.json();
-        this.messages = data;
-    },
+    // mounted: async function () {
+    //     // Just use a dummy backend API  
+    //     r = await fetch('http://localhost:8000/messages.json');     // Use 'http://localhost:8000/application.html' in browser
+    //     data = await r.json();
+    //     this.messages = data;
+    // },
 })
+
+
+// Routes for the application defined here
+const routes = [{
+    path: '/',
+    component: MessageBoard
+}, {
+    path: '/about',
+    component: About
+}, {
+    path: '/privacy-policy',
+    component: PrivacyPolicy
+}];
+
+
+// Create Vue Router instance
+const router = new VueRouter({
+    routes
+});
 
 
 let app = new Vue({
     el: "#app",
+    router: router,
     data: {
         global_count: 0
     },
