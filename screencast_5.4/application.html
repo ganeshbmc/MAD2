@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <td>
+                    <message-board title="GP's board" v-on:add-to-global-count="count_global"></message-board>
+                </td>
+                <!-- <td>
+                    <message-board title="Indu's board" v-on:add-to-global-count="count_global"></message-board>
+                </td>
+                <td>
+                    <message-board title="Anu's board" v-on:add-to-global-count="count_global"></message-board>
+                </td> -->
+            </tr>
+        </table>
+
+        <h3>Total messages received till now: {{ global_count }}</h3>
+
+
+        <!-- The following has been moved to template inside vue component -->
+        <!-- <p>Your name: <input type="text" v-model="visitor_name"/></p>
+        <p>Your message: <input type="text" v-model="visitor_message"/></p>
+        <button v-on:click="sayHi">Say Hi!</button>
+
+        <ul>
+            <li v-for="message in messages">{{ message["visitor_name"] }} : {{ message["visitor_message"] }}</li>
+        </ul> -->
+    </div>
+
+</body>
+<script type="text/javascript" src="application.js"></script>
+</html>

@@ -113,7 +113,7 @@ fetch('https://httpbin.org/put', {
 fetch("https://httpbin.org/image/jpeg")
 .then((response) => {
     console.log('Got it')
-    return response.blod();
+    return response.blob();
 }).then((myBlob) => {
     console.log(myBlob)
 }).catch(error => {
